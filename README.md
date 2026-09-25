@@ -1,15 +1,21 @@
-# Gamer 配置包仓库
+# Gamer 配置包
 
-公开配置包通过 GitHub Releases 分发。请下载 `.gamerpkg`，在 Gamer 的「配置包 → 导入」中安装。
+用于分发 Gamer 配置包的公开仓库。正式目录通过 GitHub Releases 提供，代码仓库无需保存每个配置文件。
 
-支持仓库源的 Gamer 版本可在「配置包」页添加 `https://github.com/jesongit/gamer-packages`，读取最新正式 Release 的完整目录。
+## 使用配置
 
-## 发布约定
+在 Gamer 0.2.1 或更高版本的「配置包」页添加仓库：
 
-使用 Gamer「配置包发布」插件，选择配置、目标仓库并生成预览，再创建草稿、检查并公开。发布者使用运行 Gamer 的电脑上的 GitHub CLI 登录。
+https://github.com/jesongit/gamer-packages
 
-每个正式 Release 包含 `packages.json`、`SHA256SUMS.txt` 与目录中的全部当前版本 `.gamerpkg`。目录版本独立于配置包版本；修改包内容必须提升包内版本号，已发布资产不覆盖。
+刷新后选择配置安装。下载者不需要 GitHub 登录或 gh。覆盖已有同 ID 配置会替换本地内容，请先导出需要保留的修改；安装后不会自动运行脚本。
 
-仓库初始的 `publisher-smoke` 是发布和导入闭环验收用示例，不包含脚本、设备信息或个人数据。
+## 发布配置
 
-同 ID 配置导入会提示覆盖本地修改，更新前可以先导出备份。导入配置不会自动运行脚本，也不会自动安装依赖插件。
+在运行 Gamer 的电脑上安装 GitHub CLI 并用有仓库写权限的账号登录。安装「配置包发布」插件后，在工作台选择本地配置，填写仓库地址，生成预览、创建草稿并确认公开。已有导出文件先在配置包页导入。
+
+插件为每次 Release 生成完整 packages.json、.gamerpkg 归档和 SHA256SUMS.txt。未选择的已发布配置会保留。同 ID、同版本内容不能改写；更新内容请先提升配置版本。
+
+首次仅支持公开仓库。多人发布需协调，避免同时操作。发布后 GitHub 匿名发现可能短暂未同步，可稍后刷新。
+
+当前 publisher-smoke@1.0.0 是自动验收示例，仅含包元数据，无脚本、无个人数据。
